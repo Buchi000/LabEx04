@@ -19,6 +19,28 @@ function multiArray(array){
 return multiplication;
 }
 
+function multiArray(array){
+    multiplication = 1
+    for (let i = 0; i < array.length; i++) {
+        multiplication = multiplication * Number(array[i]);
+}
+return multiplication;
+}
+function subtract(x, y){
+    return Number(x) - Number(y);
+}
+ function division (x, y){
+     if(y == 0){
+         return "Error b/c denominator can't be zero"
+     }
+     else{
+         return Number(x)/Number(y)
+     }
+ }
+ function findSquare(number) {
+    return number*number;
+}
+
 
 
 (function() {
@@ -41,6 +63,21 @@ return multiplication;
   if(choice == "2"){
       console.log("result is " + multiArray(numbers_array))
   }
+}
+if(choice =="3"){
+    x = prompt("Enter the first number ");
+    y = prompt("Enter the second number ")
+    console.log("result is " + subtract(x, y))
+
+}
+if(choice == "4"){
+    x = prompt("Enter the first number ");
+    y = prompt("Enter the second number ")
+    console.log("result is " + division(x, y))
+}
+if(choice== "5"){
+    number = prompt("Enter number you want to find square of: ");
+        console.log('Result: ' + findSquare(number));
 }
 
 })();
