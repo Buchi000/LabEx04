@@ -1,7 +1,7 @@
 let BankAccount = {
     accountNumber: '',
-    balance: 100,
-    maxAmount: 9000,
+    balance: 50,
+    maxAmount: 7000,
 
     deposit:function(amount) {
         this.balance += Number(amount);   
@@ -27,19 +27,30 @@ let BankAccount = {
     },
 
 
-
+    transfer: function (amount, to) {
+        let check;
+        if (amount < this.balance - 20) {
+           this.balance = this.balance - amount;
+           check= "You have sucssusfuly transfered ETB " + transfer_amount + " to account " + account_to_transfer;
+        }
+        else{
+            check ="Can't transfer: Insufficient funds."
+        }
+        return check;
+    }
 
 }
 
 let service;
 let  deposit_amount;
 let  withdraw_amount;
+let transfer_amount ;
 
 (function() {
     BankAccount.accountNumber = prompt("Enter your account number: ")
-    let contin = 'yes';
+    let continue1 = 'yes';
 
-    while (contin == 'yes') {
+    while (continue1 == 'yes') {
         service = prompt("Which of the following services would you like \n" +
                 "1. Deposit \n" +
                 "2. Withdraw \n" +
@@ -61,7 +72,16 @@ let  withdraw_amount;
        else  if (service == 3) {
             console.log("Your current balance is ETB " + BankAccount.getBalance());
         }
-        contin = prompt("Would you like to continue? (yes/no)");
+        else if (service == 4) {
+            account_to_transfer = prompt("Enter account number of account your transfering to: ");
+            transfer_amount = prompt("Enter amount to transfer: ");
+
+            console.log(BankAccount.withdraw(transfer_amount));
+        
+        }
+
+
+        continue1 = prompt("Would you like to continue? (yes/no)");
     
 }
 })();
